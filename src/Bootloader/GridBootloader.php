@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace Spiral\DataGrid\Bootloader;
 
-use Cheque\Spiral\DataGrid\InputScope;
+use Cheque\Spiral\DataGrid\GridInput;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Grid;
@@ -21,7 +21,7 @@ use Spiral\DataGrid\Writer\QueryWriter;
 final class GridBootloader extends Bootloader
 {
     protected const SINGLETONS = [
-        InputInterface::class => InputScope::class,
+        InputInterface::class => GridInput::class,
         GridInterface::class  => Grid::class,
         GridFactory::class    => GridFactory::class,
         Compiler::class       => [self::class, 'compiler']

@@ -12,7 +12,7 @@ namespace Cheque\Spiral\DataGrid;
 use Spiral\DataGrid\InputInterface;
 use Spiral\Http\Request\InputManager;
 
-final class InputScope implements InputInterface
+final class GridInput implements InputInterface
 {
     /** @var InputManager */
     private $input;
