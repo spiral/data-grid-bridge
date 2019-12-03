@@ -7,9 +7,8 @@
  */
 declare(strict_types=1);
 
-namespace Cheque\Spiral\DataGrid;
+namespace Spiral\DataGrid;
 
-use Spiral\DataGrid\InputInterface;
 use Spiral\Http\Request\InputManager;
 
 final class GridInput implements InputInterface

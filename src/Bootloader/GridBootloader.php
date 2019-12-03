@@ -9,11 +9,11 @@ declare(strict_types=1);
 
 namespace Spiral\DataGrid\Bootloader;
 
-use Cheque\Spiral\DataGrid\GridInput;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Grid;
 use Spiral\DataGrid\GridFactory;
+use Spiral\DataGrid\GridInput;
 use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
 use Spiral\DataGrid\Writer\QueryWriter;
