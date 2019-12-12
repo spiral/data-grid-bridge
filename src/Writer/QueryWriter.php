@@ -55,6 +55,10 @@ class QueryWriter implements WriterInterface
             return null;
         }
 
+        if ($specification instanceof Specification\SequenceInterface) {
+            return $compiler->compile($source, ...$specification->getSpecifications());
+        }
+
         if ($specification instanceof Specification\FilterInterface) {
             return $this->writeFilter($source, $specification, $compiler);
         }
