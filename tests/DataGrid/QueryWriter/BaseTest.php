@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Spiral Framework. PHP Data Grid
+ * Spiral Framework. Data Grid Bridge.
  *
  * @license MIT
  * @author  Anton Tsitou (Wolfy-J)
