@@ -15,7 +15,6 @@ namespace Spiral\Tests\DataGrid\QueryWriter;
 use PHPUnit\Framework\TestCase;
 use Spiral\Database\Database;
 use Spiral\Database\Driver\SQLite\SQLiteDriver;
-use Spiral\Database\Query\Interpolator;
 use Spiral\Database\Query\SelectQuery;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\SpecificationInterface;
@@ -45,14 +44,9 @@ abstract class BaseTest extends TestCase
      */
     protected function assertEqualSQL(string $expected, SelectQuery $compiled): void
     {
-        $compiled = Interpolator::interpolate(
-            $compiled->sqlStatement(),
-            $compiled->getParameters()
-        );
-
         $this->assertSame(
             preg_replace("/\s+/", '', $expected),
-            preg_replace("/\s+/", '', $compiled)
+            preg_replace("/\s+/", '', (string)$compiled)
         );
     }
 }
