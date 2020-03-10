@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Spiral Framework. PHP Data Grid
+ * Spiral Framework. Data Grid Bridge.
  *
- * @author Valentin Vintsukevich (vvval)
+ * @license MIT
+ * @author  Valentin Vintsukevich (vvval)
  */
 
 declare(strict_types=1);
