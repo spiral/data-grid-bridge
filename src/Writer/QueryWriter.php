@@ -82,6 +82,21 @@ class QueryWriter implements WriterInterface
      */
     protected function writeFilter($source, Specification\FilterInterface $filter, Compiler $compiler)
     {
+        if ($filter instanceof Specification\Filter\Between) {
+            $asOriginal = true;
+            if (count($filter->getFilters($asOriginal)) > 1) {
+                return $source->where(static function () use ($compiler, $filter, $source): void {
+                    $compiler->compile($source, ...$filter->getFilters(true));
+                });
+            }
+
+            return $source->where(
+                $filter->getExpression(),
+                'BETWEEN',
+                $filter->getValue()
+            );
+        }
+
         if ($filter instanceof Specification\Filter\All || $filter instanceof Specification\Filter\Map) {
             return $source->where(static function () use ($compiler, $filter, $source): void {
                 $compiler->compile($source, ...$filter->getFilters());
