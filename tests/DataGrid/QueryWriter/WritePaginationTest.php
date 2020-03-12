@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Spiral\Tests\DataGrid\QueryWriter;
 
 use Spiral\DataGrid\Specification\Pagination;
+use Spiral\Tests\DataGrid\BaseTest;
 
 class WritePaginationTest extends BaseTest
 {

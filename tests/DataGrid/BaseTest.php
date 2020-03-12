@@ -10,7 +10,7 @@
 
 declare(strict_types=1);
 
-namespace Spiral\Tests\DataGrid\QueryWriter;
+namespace Spiral\Tests\DataGrid;
 
 use PHPUnit\Framework\TestCase;
 use Spiral\Database\Database;

@@ -14,6 +14,7 @@ namespace Spiral\Tests\DataGrid\QueryWriter;
 use Spiral\DataGrid\Exception\CompilerException;
 use Spiral\DataGrid\Specification\Filter;
 use Spiral\DataGrid\Specification\Value\IntValue;
+use Spiral\Tests\DataGrid\BaseTest;
 
 class WriteFilterTest extends BaseTest
 {
