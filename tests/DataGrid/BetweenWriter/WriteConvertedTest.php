@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Spiral Framework. Data Grid Bridge.
+ *
+ * @license MIT
+ * @author  Valentin Vintsukevich (vvval)
+ */
+
 declare(strict_types=1);
 
 namespace Spiral\Tests\DataGrid\BetweenWriter;
