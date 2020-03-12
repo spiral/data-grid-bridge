@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Spiral\DataGrid\Writer;
@@ -23,10 +24,18 @@ class OriginalBetweenWriter implements WriterInterface
                 });
             }
 
+            if ($specification instanceof Filter\Between) {
+                return $source->where(
+                    $specification->getExpression(),
+                    'BETWEEN',
+                    ...$specification->getValue()
+                );
+            }
+
             return $source->where(
-                $specification instanceof Filter\Between ? $specification->getExpression() : $specification->getValue(),
+                $specification->getValue(),
                 'BETWEEN',
-                ...($specification instanceof Filter\Between ? $specification->getValue() : $specification->getExpression())
+                ...$specification->getExpression()
             );
         }
 
