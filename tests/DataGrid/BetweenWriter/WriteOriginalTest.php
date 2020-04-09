@@ -15,7 +15,7 @@ use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Specification\Filter;
 use Spiral\DataGrid\Specification\Value\StringValue;
 use Spiral\DataGrid\SpecificationInterface;
-use Spiral\DataGrid\Writer\OriginalBetweenWriter;
+use Spiral\DataGrid\Writer\BetweenWriter;
 use Spiral\DataGrid\Writer\QueryWriter;
 use Spiral\Tests\DataGrid\BaseTest;
 
@@ -71,7 +71,7 @@ class WriteOriginalTest extends BaseTest
     protected function compile($source, SpecificationInterface ...$specifications)
     {
         $compiler = new Compiler();
-        $compiler->addWriter(new OriginalBetweenWriter());
+        $compiler->addWriter(new BetweenWriter(true));
         $compiler->addWriter(new QueryWriter());
 
         return $compiler->compile($source, ...$specifications);
