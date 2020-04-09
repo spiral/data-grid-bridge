@@ -23,6 +23,7 @@ use Spiral\DataGrid\GridFactory;
 use Spiral\DataGrid\GridInput;
 use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
+use Spiral\DataGrid\Writer\BetweenWriter;
 use Spiral\DataGrid\Writer\QueryWriter;
 
 final class GridBootloader extends Bootloader
@@ -48,7 +49,7 @@ final class GridBootloader extends Bootloader
     public function boot(): void
     {
         $this->config->setDefaults(GridConfig::CONFIG, [
-            'writers' => [QueryWriter::class]
+            'writers' => [QueryWriter::class, BetweenWriter::class]
         ]);
     }
 
