@@ -54,7 +54,7 @@ class BetweenWriter implements WriterInterface
         }
 
         return $source->where(
-            $specification->getValue(),
+            (string)$specification->getValue(),
             'BETWEEN',
             ...$specification->getExpression()
         );
