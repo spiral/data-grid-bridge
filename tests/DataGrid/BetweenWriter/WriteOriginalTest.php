@@ -13,6 +13,7 @@ namespace Spiral\Tests\DataGrid\BetweenWriter;
 
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Specification\Filter;
+use Spiral\DataGrid\Specification\Value\IntValue;
 use Spiral\DataGrid\Specification\Value\StringValue;
 use Spiral\DataGrid\SpecificationInterface;
 use Spiral\DataGrid\Writer\BetweenWriter;
@@ -51,16 +52,16 @@ class WriteOriginalTest extends BaseTest
         );
 
         $this->assertEqualSQL(
-            'SELECT * FROM "users" WHERE "12" BETWEEN \'created\' AND \'updated\'',
+            'SELECT * FROM "users" WHERE 12 BETWEEN \'created\' AND \'updated\'',
             $select
         );
 
         $select = $this->compile(
             $this->initQuery(),
-            (new Filter\ValueBetween(new StringValue(), ['created', 'updated']))->withValue(12)
+            (new Filter\ValueBetween(new IntValue(), ['created', 'updated']))->withValue('12')
         );
         $this->assertEqualSQL(
-            'SELECT * FROM "users" WHERE "12" BETWEEN \'created\' AND \'updated\'',
+            'SELECT * FROM "users" WHERE 12 BETWEEN \'created\' AND \'updated\'',
             $select
         );
     }

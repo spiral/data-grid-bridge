@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Spiral\DataGrid\Writer;
 
+use Spiral\Database\Injection\Parameter;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Specification\Filter;
 use Spiral\DataGrid\SpecificationInterface;
@@ -54,7 +55,7 @@ class BetweenWriter implements WriterInterface
         }
 
         return $source->where(
-            (string)$specification->getValue(),
+            new Parameter($specification->getValue()),
             'BETWEEN',
             ...$specification->getExpression()
         );
