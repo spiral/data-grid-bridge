@@ -35,6 +35,7 @@ class QueryWriter implements WriterInterface
         Specification\Filter\Gt::class        => '>',
         Specification\Filter\Gte::class       => '>=',
     ];
+
     private const ARRAY_OPERATORS   = [
         Specification\Filter\InArray::class    => 'IN',
         Specification\Filter\NotInArray::class => 'NOT IN',

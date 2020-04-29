@@ -1,11 +1,10 @@
 <?php
 
 /**
- * Spiral Framework. Data Grid Bridge.
+ * Spiral Framework.
  *
- * @license MIT
- * @author  Anton Tsitou (Wolfy-J)
- * @author  Valentin Vintsukevich (vvval)
+ * @license   MIT
+ * @author    Anton Titov (Wolfy-J)
  */
 
 declare(strict_types=1);
@@ -23,16 +22,19 @@ use Spiral\DataGrid\GridFactory;
 use Spiral\DataGrid\GridInput;
 use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
+use Spiral\DataGrid\Response\GridResponse;
+use Spiral\DataGrid\Response\GridResponseInterface;
 use Spiral\DataGrid\Writer\BetweenWriter;
 use Spiral\DataGrid\Writer\QueryWriter;
 
 final class GridBootloader extends Bootloader
 {
     protected const SINGLETONS = [
-        InputInterface::class => GridInput::class,
-        GridInterface::class  => Grid::class,
-        GridFactory::class    => GridFactory::class,
-        Compiler::class       => [self::class, 'compiler']
+        InputInterface::class        => GridInput::class,
+        GridInterface::class         => Grid::class,
+        GridFactory::class           => GridFactory::class,
+        Compiler::class              => [self::class, 'compiler'],
+        GridResponseInterface::class => GridResponse::class
     ];
 
     /** @var ConfiguratorInterface */
@@ -46,6 +48,9 @@ final class GridBootloader extends Bootloader
         $this->config = $config;
     }
 
+    /**
+     * Inits default config.
+     */
     public function boot(): void
     {
         $this->config->setDefaults(GridConfig::CONFIG, [
