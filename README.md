@@ -3,3 +3,6 @@
 [![Build Status](https://travis-ci.org/spiral/data-grid-bridge.svg?branch=master)](https://travis-ci.org/spiral/data-grid-bridge)
 [![Codecov](https://codecov.io/gh/spiral/data-grid-bridge/branch/master/graph/badge.svg)](https://codecov.io/gh/spiral/data-grid-bridge/)
 
+License:
+--------
+MIT License (MIT). Please see [`LICENSE`](./LICENSE) for more information. Maintained by [Spiral Scout](https://spiralscout.com).

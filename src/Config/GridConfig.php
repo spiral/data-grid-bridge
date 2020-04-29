@@ -16,7 +16,7 @@ use Spiral\Core\InjectableConfig;
 /**
  * Configuration for data grid bridge writers.
  */
-class GridConfig extends InjectableConfig
+final class GridConfig extends InjectableConfig
 {
     public const CONFIG = 'dataGrid';
 
