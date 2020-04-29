@@ -24,6 +24,7 @@ use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
 use Spiral\DataGrid\Response\GridResponse;
 use Spiral\DataGrid\Response\GridResponseInterface;
+use Spiral\DataGrid\Writer\BetweenWriter;
 use Spiral\DataGrid\Writer\QueryWriter;
 
 final class GridBootloader extends Bootloader
@@ -40,7 +41,6 @@ final class GridBootloader extends Bootloader
     private $config;
 
     /**
-     * @param ContainerInterface $container
      * @param ConfiguratorInterface $config
      */
     public function __construct(ConfiguratorInterface $config)
@@ -48,6 +48,9 @@ final class GridBootloader extends Bootloader
         $this->config = $config;
     }
 
+    /**
+     * Inits default config.
+     */
     public function boot(): void
     {
         $this->config->setDefaults(GridConfig::CONFIG, [
