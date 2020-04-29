@@ -20,18 +20,22 @@ use Spiral\DataGrid\GridFactory;
 use Spiral\DataGrid\GridInput;
 use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
+use Spiral\DataGrid\Response\GridResponse;
+use Spiral\DataGrid\Response\GridResponseInterface;
 use Spiral\DataGrid\Writer\QueryWriter;
 
 final class GridBootloader extends Bootloader
 {
     protected const SINGLETONS = [
-        InputInterface::class => GridInput::class,
-        GridInterface::class  => Grid::class,
-        GridFactory::class    => GridFactory::class,
-        Compiler::class       => [self::class, 'compiler']
+        InputInterface::class        => GridInput::class,
+        GridInterface::class         => Grid::class,
+        GridFactory::class           => GridFactory::class,
+        Compiler::class              => [self::class, 'compiler'],
+        GridResponseInterface::class => GridResponse::class
     ];
 
     /**
+     * @param ContainerInterface $container
      * @return Compiler
      */
     public function compiler(ContainerInterface $container): Compiler

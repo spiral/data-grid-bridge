@@ -5,20 +5,23 @@
   "description": "Data Grid specification builder adapter for Spiral Framework",
   "authors": [
     {
-      "name": "Anton Tsitou (wolfy-j)",
+      "name": "Anton Titov (wolfy-j)",
       "email": "wolfy-j@spiralscout.com"
     }
   ],
   "require": {
     "php": "^7.2",
+    "ext-json": "*",
     "spiral/boot": "^1.0",
     "spiral/http": "^1.2",
     "spiral/data-grid": "^1.0"
   },
   "require-dev": {
-    "cycle/orm": "^1.1",
     "phpunit/phpunit": "^7.0",
-    "spiral/code-style": "^1.0"
+    "spiral/code-style": "^1.0",
+    "cycle/orm": "^1.1",
+    "spiral/hmvc": "^2.0",
+    "doctrine/annotations": "^1.10"
   },
   "autoload": {
     "psr-4": {
