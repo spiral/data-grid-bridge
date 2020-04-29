@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Spiral Framework. PHP Data Grid
+ * Spiral Framework. Data Grid Bridge.
  *
  * @license MIT
  * @author  Anton Tsitou (Wolfy-J)
@@ -10,13 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Spiral\Tests\DataGrid\QueryWriter;
+namespace Spiral\Tests\DataGrid;
 
 use PHPUnit\Framework\TestCase;
 use Spiral\Database\Database;
 use Spiral\Database\Driver\SQLite\SQLiteDriver;
-use Spiral\Database\Query\Interpolator;
-use Spiral\Database\Query\QueryParameters;
 use Spiral\Database\Query\SelectQuery;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\SpecificationInterface;
@@ -46,14 +44,9 @@ abstract class BaseTest extends TestCase
      */
     protected function assertEqualSQL(string $expected, SelectQuery $compiled): void
     {
-        $params = new QueryParameters();
-        $sql = $compiled->sqlStatement($params);
-
-        $compiled = Interpolator::interpolate($sql, $params->getParameters());
-
         $this->assertSame(
             preg_replace("/\s+/", '', $expected),
-            preg_replace("/\s+/", '', $compiled)
+            preg_replace("/\s+/", '', (string)$compiled)
         );
     }
 }

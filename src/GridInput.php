@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Spiral Framework.
+ * Spiral Framework. Data Grid Bridge.
  *
- * @license   MIT
- * @author    Anton Titov (Wolfy-J)
+ * @license MIT
+ * @author  Anton Tsitou (Wolfy-J)
  */
 
 declare(strict_types=1);

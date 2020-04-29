@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Spiral Framework. PHP Data Grid
+ * Spiral Framework. Data Grid Bridge.
  *
  * @license MIT
  * @author  Anton Tsitou (Wolfy-J)
@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Spiral\Tests\DataGrid\QueryWriter;
 
 use Spiral\DataGrid\Specification\Pagination;
+use Spiral\Tests\DataGrid\BaseTest;
 
 class WritePaginationTest extends BaseTest
 {

@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Spiral Framework. PHP Data Grid
+ * Spiral Framework. Data Grid Bridge.
  *
- * @author Valentin Vintsukevich (vvval)
+ * @license MIT
+ * @author  Valentin Vintsukevich (vvval)
  */
 
 declare(strict_types=1);
@@ -13,6 +14,7 @@ namespace Spiral\Tests\DataGrid\QueryWriter;
 use Spiral\DataGrid\Exception\CompilerException;
 use Spiral\DataGrid\Specification\Filter;
 use Spiral\DataGrid\Specification\Value\IntValue;
+use Spiral\Tests\DataGrid\BaseTest;
 
 class WriteFilterTest extends BaseTest
 {
