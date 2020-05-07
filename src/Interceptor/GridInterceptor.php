@@ -136,7 +136,7 @@ final class GridInterceptor implements CoreInterceptorInterface
         }
 
         if ($schema['options'] === [] && method_exists($schema['grid'], 'getOptions')) {
-            $schema['options'] = $schema['grid']->getDefaults();
+            $schema['options'] = $schema['grid']->getOptions();
         }
 
         if ($schema['view'] === null && is_callable($schema['grid'])) {
