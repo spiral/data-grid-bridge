@@ -18,7 +18,7 @@ use Spiral\DataGrid\SpecificationInterface;
 
 abstract class InjectionFilter implements FilterInterface
 {
-    protected const INJECTOR = '';
+    protected const INJECTION = '';
 
     /** @var Between|Expression */
     private $expression;
@@ -43,9 +43,9 @@ abstract class InjectionFilter implements FilterInterface
     /**
      * @return Injection\FragmentInterface
      */
-    public function getFragment(): Injection\FragmentInterface
+    public function getInjection(): Injection\FragmentInterface
     {
-        $injector = static::INJECTOR;
+        $injector = static::INJECTION;
         return new $injector($this->expression->getExpression());
     }
 

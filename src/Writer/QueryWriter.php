@@ -103,7 +103,7 @@ class QueryWriter implements WriterInterface
             $expression = $filter->getFilter();
             if ($expression instanceof Specification\Filter\Expression) {
                 return $source->where(
-                    $filter->getFragment(),
+                    $filter->getInjection(),
                     $this->getExpressionOperator($expression),
                     ...$this->getExpressionArgs($expression)
                 );

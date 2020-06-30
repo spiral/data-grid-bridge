@@ -15,5 +15,5 @@ use Spiral\Database\Injection;
 
 class FragmentInjectionFilter extends InjectionFilter
 {
-    protected const INJECTOR = Injection\Fragment::class;
+    protected const INJECTION = Injection\Fragment::class;
 }

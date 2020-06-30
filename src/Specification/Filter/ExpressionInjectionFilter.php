@@ -15,5 +15,5 @@ use Spiral\Database\Injection;
 
 class ExpressionInjectionFilter extends InjectionFilter
 {
-    protected const INJECTOR = Injection\Expression::class;
+    protected const INJECTION = Injection\Expression::class;
 }
