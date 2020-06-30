@@ -44,6 +44,19 @@ class WriteOriginalTest extends BaseTest
         );
     }
 
+    public function testExpressionBetween(): void
+    {
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\FragmentInjectionFilter(new Filter\Between('ROUND(field)', [1, 2]))
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE ROUND(field) BETWEEN 1 AND 2',
+            $select
+        );
+    }
+
     public function testValueBetween(): void
     {
         $select = $this->compile(

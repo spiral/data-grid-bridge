@@ -32,6 +32,14 @@ abstract class InjectionFilter implements FilterInterface
         $this->expression = $expression;
     }
 
+    public static function createFrom(InjectionFilter $injector, SpecificationInterface $expression): InjectionFilter
+    {
+        $clone = clone $injector;
+        $clone->expression = $expression;
+
+        return $clone;
+    }
+
     /**
      * @return SpecificationInterface
      */

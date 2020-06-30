@@ -35,15 +35,40 @@ class BetweenWriter implements WriterInterface
      */
     public function write($source, SpecificationInterface $specification, Compiler $compiler)
     {
-        if (!$specification instanceof Filter\Between && !$specification instanceof Filter\ValueBetween) {
-            return null;
+        if ($specification instanceof Filter\Between || $specification instanceof Filter\ValueBetween) {
+            $filters = $specification->getFilters($this->asOriginal);
+            if (count($filters) > 1) {
+                return $source->where(static function () use ($compiler, $source, $filters): void {
+                    $compiler->compile($source, ...$filters);
+                });
+            }
         }
 
-        $filters = $specification->getFilters($this->asOriginal);
-        if (count($filters) > 1) {
-            return $source->where(static function () use ($compiler, $source, $filters): void {
-                $compiler->compile($source, ...$filters);
-            });
+        if ($specification instanceof Filter\InjectionFilter) {
+            $expression = $specification->getFilter();
+            if ($expression instanceof Filter\Between) {
+                $filters = $expression->getFilters($this->asOriginal);
+                if (count($filters) > 1) {
+                    $filters = array_map(
+                        static function (SpecificationInterface $filter) use ($specification): Filter\InjectionFilter {
+                            return Filter\InjectionFilter::createFrom($specification, $filter);
+                        },
+                        $filters
+                    );
+
+                    return $source->where(
+                        static function () use ($compiler, $source, $filters): void {
+                            $compiler->compile($source, ...$filters);
+                        }
+                    );
+                }
+
+                return $source->where(
+                    $specification->getInjection(),
+                    'BETWEEN',
+                    ...$specification->getValue()
+                );
+            }
         }
 
         if ($specification instanceof Filter\Between) {
@@ -54,10 +79,14 @@ class BetweenWriter implements WriterInterface
             );
         }
 
-        return $source->where(
-            new Parameter($specification->getValue()),
-            'BETWEEN',
-            ...$specification->getExpression()
-        );
+        if ($specification instanceof Filter\ValueBetween) {
+            return $source->where(
+                new Parameter($specification->getValue()),
+                'BETWEEN',
+                ...$specification->getExpression()
+            );
+        }
+
+        return null;
     }
 }
