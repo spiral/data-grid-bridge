@@ -36,7 +36,7 @@ class QueryWriter implements WriterInterface
         Specification\Filter\Gte::class       => '>=',
     ];
 
-    private const ARRAY_OPERATORS   = [
+    private const ARRAY_OPERATORS = [
         Specification\Filter\InArray::class    => 'IN',
         Specification\Filter\NotInArray::class => 'NOT IN',
     ];
@@ -99,31 +99,60 @@ class QueryWriter implements WriterInterface
             });
         }
 
-        if ($filter instanceof Specification\Filter\Like) {
-            return $source->where(
-                $filter->getExpression(),
-                'LIKE',
-                sprintf($filter->getPattern(), $this->fetchValue($filter->getValue()))
-            );
+        if ($filter instanceof Specification\Filter\InjectionFilter) {
+            $expression = $filter->getFilter();
+            if ($expression instanceof Specification\Filter\Expression) {
+                return $source->where(
+                    $filter->getInjection(),
+                    $this->getExpressionOperator($expression),
+                    ...$this->getExpressionArgs($expression)
+                );
+            }
         }
 
-        if ($filter instanceof Specification\Filter\InArray || $filter instanceof Specification\Filter\NotInArray) {
+        if ($filter instanceof Specification\Filter\Expression) {
             return $source->where(
                 $filter->getExpression(),
-                self::ARRAY_OPERATORS[get_class($filter)],
-                new Parameter($this->fetchValue($filter->getValue()))
-            );
-        }
-
-        if (isset(self::COMPARE_OPERATORS[get_class($filter)])) {
-            return $source->where(
-                $filter->getExpression(),
-                self::COMPARE_OPERATORS[get_class($filter)],
-                $this->fetchValue($filter->getValue())
+                $this->getExpressionOperator($filter),
+                ...$this->getExpressionArgs($filter)
             );
         }
 
         return null;
+    }
+
+    /**
+     * @param Specification\Filter\Expression $filter
+     * @return string
+     */
+    protected function getExpressionOperator(Specification\Filter\Expression $filter): string
+    {
+        if ($filter instanceof Specification\Filter\Like) {
+            return 'LIKE';
+        }
+
+        if ($filter instanceof Specification\Filter\InArray || $filter instanceof Specification\Filter\NotInArray) {
+            return self::ARRAY_OPERATORS[get_class($filter)];
+        }
+
+        return self::COMPARE_OPERATORS[get_class($filter)];
+    }
+
+    /**
+     * @param Specification\Filter\Expression $filter
+     * @return array|Parameter[]|Specification\ValueInterface[]
+     */
+    protected function getExpressionArgs(Specification\Filter\Expression $filter): array
+    {
+        if ($filter instanceof Specification\Filter\Like) {
+            return [sprintf($filter->getPattern(), $this->fetchValue($filter->getValue()))];
+        }
+
+        if ($filter instanceof Specification\Filter\InArray || $filter instanceof Specification\Filter\NotInArray) {
+            return [new Parameter($this->fetchValue($filter->getValue()))];
+        }
+
+        return [$this->fetchValue($filter->getValue())];
     }
 
     /**
