@@ -148,22 +148,54 @@ class WriteFilterTest extends BaseTest
 
     public function testGt(): void
     {
-        $this->assertTrue(true);
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\Gt('value', 5)
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE "value" > 5',
+            $select
+        );
     }
 
     public function testGte(): void
     {
-        $this->assertTrue(true);
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\Gte('value', 5)
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE "value" >= 5',
+            $select
+        );
     }
 
     public function testLt(): void
     {
-        $this->assertTrue(true);
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\Lt('value', 5)
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE "value" < 5',
+            $select
+        );
     }
 
     public function testLte(): void
     {
-        $this->assertTrue(true);
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\Lte('value', 5)
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE "value" <= 5',
+            $select
+        );
     }
 
     public function testMap(): void
@@ -173,6 +205,40 @@ class WriteFilterTest extends BaseTest
 
     public function testNotEquals(): void
     {
-        $this->assertTrue(true);
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\NotEquals('name', 'Antony')
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE "name" != \'Antony\'',
+            $select
+        );
+    }
+
+    public function testFragmentInjection(): void
+    {
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\FragmentInjectionFilter(new Filter\Equals('date(created)', '2020-06-06'))
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE date(created) = \'2020-06-06\'',
+            $select
+        );
+    }
+
+    public function testExpressionInjection(): void
+    {
+        $select = $this->compile(
+            $this->initQuery(),
+            new Filter\ExpressionInjectionFilter(new Filter\Equals('NOW()', '2020-06-06'))
+        );
+
+        $this->assertEqualSQL(
+            'SELECT * FROM "users" WHERE NOW() = \'2020-06-06\'',
+            $select
+        );
     }
 }
