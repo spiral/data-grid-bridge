@@ -1,17 +1,10 @@
 <?php
 
-/**
- * Spiral Framework. Data Grid Bridge.
- *
- * @license MIT
- * @author  Valentin Vintsukevich (vvval)
- */
-
 declare(strict_types=1);
 
 namespace Spiral\DataGrid\Specification\Filter;
 
-use Spiral\Database\Injection;
+use Cycle\Database\Injection;
 
 class ExpressionInjectionFilter extends InjectionFilter
 {

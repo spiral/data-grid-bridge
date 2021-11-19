@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Spiral\DataGrid\Writer;
 
-use Spiral\Database\Injection\Parameter;
+use Cycle\Database\Injection\Parameter;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Specification\Filter;
 use Spiral\DataGrid\SpecificationInterface;
@@ -22,9 +22,6 @@ class BetweenWriter implements WriterInterface
     /** @var bool */
     private $asOriginal;
 
-    /**
-     * @param bool $asOriginal
-     */
     public function __construct(bool $asOriginal = false)
     {
         $this->asOriginal = $asOriginal;
