@@ -15,7 +15,7 @@ use Psr\Container\ContainerInterface;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\Config\ConfiguratorInterface;
 use Spiral\DataGrid\GridFactoryInterface;
-use Spiral\Database\DatabaseInterface;
+use Cycle\Database\DatabaseInterface;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Config\GridConfig;
 use Spiral\DataGrid\Grid;
@@ -39,12 +39,8 @@ final class GridBootloader extends Bootloader
         GridResponseInterface::class => GridResponse::class,
     ];
 
-    /** @var ConfiguratorInterface */
-    private $config;
+    private ConfiguratorInterface $config;
 
-    /**
-     * @param ConfiguratorInterface $config
-     */
     public function __construct(ConfiguratorInterface $config)
     {
         $this->config = $config;
@@ -60,12 +56,6 @@ final class GridBootloader extends Bootloader
         ]);
     }
 
-    /**
-     * @param ContainerInterface $container
-     * @param Compiler           $compiler
-     * @param GridConfig         $config
-     * @return Compiler
-     */
     public function compiler(ContainerInterface $container, Compiler $compiler, GridConfig $config): Compiler
     {
         if ($container->has(DatabaseInterface::class)) {

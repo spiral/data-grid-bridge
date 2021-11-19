@@ -13,8 +13,8 @@ declare(strict_types=1);
 namespace Spiral\DataGrid\Writer;
 
 use Cycle\ORM\Select;
-use Spiral\Database\Driver\Postgres\PostgresDriver;
-use Spiral\Database\Query\SelectQuery;
+use Cycle\Database\Driver\Postgres\PostgresDriver;
+use Cycle\Database\Query\SelectQuery;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Exception\CompilerException;
 use Spiral\DataGrid\Specification;

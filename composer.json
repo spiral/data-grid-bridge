@@ -23,7 +23,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5|^9.0",
-        "cycle/orm": "^1.2.6",
+        "cycle/orm": "2.0.x-dev",
         "spiral/hmvc": "^2.9",
         "doctrine/annotations": "^1.11"
     },

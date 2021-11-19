@@ -14,8 +14,8 @@ namespace Spiral\DataGrid\Writer;
 
 use Cycle\ORM\Select;
 use Spiral\DataGrid\Specification\Sorter\InjectionSorter;
-use Spiral\Database\Injection\Parameter;
-use Spiral\Database\Query\SelectQuery;
+use Cycle\Database\Injection\Parameter;
+use Cycle\Database\Query\SelectQuery;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Exception\CompilerException;
 use Spiral\DataGrid\Specification;
