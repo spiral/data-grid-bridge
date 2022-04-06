@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Spiral Framework. Data Grid Bridge.
- *
- * @license MIT
- * @author  Anton Tsitou (Wolfy-J)
- */
-
 declare(strict_types=1);
 
 namespace Spiral\DataGrid;
@@ -15,46 +8,25 @@ use Spiral\Http\Request\InputManager;
 
 final class GridInput implements InputInterface
 {
-    /** @var InputManager */
-    private $input;
-
-    /**
-     * InputScope constructor.
-     *
-     * @param InputManager $input
-     */
-    public function __construct(InputManager $input)
-    {
-        $this->input = $input;
+    public function __construct(
+        private InputManager $input
+    ) {
     }
 
-    /**
-     * @param string $prefix
-     * @return InputInterface
-     */
-    public function withNamespace(string $prefix): InputInterface
+    public function withNamespace(string $namespace): InputInterface
     {
         $input = clone $this;
-        $input->input = $input->input->withPrefix($prefix);
+        $input->input = $input->input->withPrefix($namespace);
 
         return $input;
     }
 
-    /**
-     * @param string $option
-     * @return bool
-     */
     public function hasValue(string $option): bool
     {
         return $this->input->input($option) !== null;
     }
 
-    /**
-     * @param string $option
-     * @param mixed  $default
-     * @return mixed|null
-     */
-    public function getValue(string $option, $default = null)
+    public function getValue(string $option, mixed $default = null): mixed
     {
         return $this->input->input($option, $default);
     }

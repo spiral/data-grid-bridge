@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Spiral Framework. Data Grid Bridge.
- *
- * @license MIT
- * @author  Valentin Vintsukevich (vvval)
- */
-
 declare(strict_types=1);
 
 namespace Spiral\DataGrid\Config;
@@ -25,9 +18,6 @@ final class GridConfig extends InjectableConfig
         'writers' => [],
     ];
 
-    /**
-     * @return array
-     */
     public function getWriters(): array
     {
         return $this->config['writers'];

@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Spiral\Tests\DataGrid\Bootloader;
 
+use PHPUnit\Framework\TestCase;
 use Spiral\Config\ConfigManager;
 use Spiral\Config\LoaderInterface;
 use Spiral\DataGrid\Bootloader\GridBootloader;
 use Spiral\DataGrid\Config\GridConfig;
-use Spiral\Tests\DataGrid\BaseTest;
 
-final class GridBootloaderTest extends BaseTest
+final class GridBootloaderTest extends TestCase
 {
     public function testAddWriter(): void
     {
