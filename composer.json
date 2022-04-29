@@ -17,14 +17,15 @@
     "require": {
         "php": ">=8.1",
         "ext-json": "*",
-        "spiral/attributes": "^2.12",
-        "spiral/boot": "^2.12",
-        "spiral/data-grid": "^2.12",
-        "spiral/http": "^2.12"
+        "spiral/attributes": "^3.0",
+        "spiral/boot": "^3.0",
+        "spiral/data-grid": "^3.0",
+        "spiral/http": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "spiral/hmvc": "^2.12"
+        "spiral/hmvc": "^2.12",
+        "spiral/framework": "^3.0"
     },
     "autoload": {
         "psr-4": {
