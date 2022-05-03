@@ -34,6 +34,13 @@ final class GridBootloader extends Bootloader
     ) {
     }
 
+    public function init(): void
+    {
+        $this->config->setDefaults(GridConfig::CONFIG, [
+            'writers' => []
+        ]);
+    }
+
     public function compiler(ContainerInterface $container, Compiler $compiler, GridConfig $config): Compiler
     {
         foreach ($config->getWriters() as $writer) {
