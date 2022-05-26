@@ -14,7 +14,7 @@ final class GridConfig extends InjectableConfig
     public const CONFIG = 'dataGrid';
 
     /** @var array */
-    protected $config = [
+    protected array $config = [
         'writers' => [],
     ];
 
