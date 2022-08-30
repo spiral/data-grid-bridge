@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Spiral\Cycle\DataGrid\Interceptor;
+namespace Spiral\DataGrid\Interceptor;
 
 use Psr\Container\ContainerInterface;
 use Spiral\Attributes\ReaderInterface;
