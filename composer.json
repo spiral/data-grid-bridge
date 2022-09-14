@@ -23,8 +23,9 @@
         "spiral/http": "^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "spiral/hmvc": "^3.0"
+        "phpunit/phpunit": "^9.5.20",
+        "spiral/hmvc": "^3.0",
+        "vimeo/psalm": "^4.27"
     },
     "autoload": {
         "psr-4": {
