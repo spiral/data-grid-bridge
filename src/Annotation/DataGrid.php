@@ -20,6 +20,7 @@ use Spiral\Attributes\NamedArgumentConstructor;
  *     @Annotation\Attribute("options", type="array"),
  *     @Annotation\Attribute("factory", type="string")
  * })
+ *
  * @psalm-suppress DeprecatedClass
  */
 #[\Attribute(\Attribute::TARGET_METHOD), NamedArgumentConstructor]
