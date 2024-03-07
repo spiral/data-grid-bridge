@@ -6,6 +6,7 @@ namespace Spiral\DataGrid\Interceptor;
 
 use Psr\Container\ContainerInterface;
 use Spiral\Attributes\ReaderInterface;
+use Spiral\Core\Attribute\Proxy;
 use Spiral\Core\CoreInterceptorInterface;
 use Spiral\Core\CoreInterface;
 use Spiral\DataGrid\Annotation\DataGrid;
@@ -24,7 +25,7 @@ final class GridInterceptor implements CoreInterceptorInterface
 
     public function __construct(
         private readonly GridResponseInterface $response,
-        private readonly ContainerInterface $container,
+        #[Proxy] private readonly ContainerInterface $container,
         private readonly GridFactory $gridFactory,
         private readonly ReaderInterface $reader
     ) {
