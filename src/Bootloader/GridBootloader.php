@@ -35,9 +35,9 @@ final class GridBootloader extends Bootloader
         $this->binder->bindSingleton(InputInterface::class, new Proxy(InputInterface::class, true));
 
         return [
-            GridInterface::class => Grid::class,
-            GridFactoryInterface::class => GridFactory::class,
-            Compiler::class => [self::class, 'compiler'],
+            GridInterface::class         => Grid::class,
+            GridFactoryInterface::class  => GridFactory::class,
+            Compiler::class              => [self::class, 'compiler'],
             GridResponseInterface::class => GridResponse::class,
         ];
     }
