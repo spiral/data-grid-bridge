@@ -47,7 +47,7 @@ final class GridResponse implements \JsonSerializable, GridResponseInterface
         return $response;
     }
 
-    private function option(string $name, $default)
+    private function option(string $name, mixed $default): mixed
     {
         return $this->options[$name] ?? $default;
     }
