@@ -8,11 +8,11 @@ use Psr\Container\ContainerInterface;
 use Spiral\Boot\Bootloader\Bootloader;
 use Spiral\Config\ConfiguratorInterface;
 use Spiral\Config\Patch\Append;
-use Spiral\DataGrid\GridFactoryInterface;
 use Spiral\DataGrid\Compiler;
 use Spiral\DataGrid\Config\GridConfig;
 use Spiral\DataGrid\Grid;
 use Spiral\DataGrid\GridFactory;
+use Spiral\DataGrid\GridFactoryInterface;
 use Spiral\DataGrid\GridInput;
 use Spiral\DataGrid\GridInterface;
 use Spiral\DataGrid\InputInterface;
@@ -37,7 +37,7 @@ final class GridBootloader extends Bootloader
     public function init(): void
     {
         $this->config->setDefaults(GridConfig::CONFIG, [
-            'writers' => []
+            'writers' => [],
         ]);
     }
 

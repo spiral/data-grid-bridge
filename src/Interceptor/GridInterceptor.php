@@ -66,6 +66,7 @@ final class GridInterceptor implements CoreInterceptorInterface
         }
 
         $this->cache[$key] = null;
+
         try {
             $method = new \ReflectionMethod($controller, $action);
         } catch (\ReflectionException $e) {
