@@ -19,13 +19,16 @@
         "ext-json": "*",
         "spiral/attributes": "^2.10 || ^3.0",
         "spiral/boot": "^3.0",
+        "spiral/core": "^3.12",
         "spiral/data-grid": "^3.0",
         "spiral/http": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5",
+        "spiral/testing": "dev-feature/scopes as 2.8.0",
         "spiral/hmvc": "^3.0",
-        "vimeo/psalm": "^5.22"
+        "vimeo/psalm": "^5.22",
+        "spiral/framework": "dev-feature/http-scopes as 3.13.0"
     },
     "autoload": {
         "psr-4": {
