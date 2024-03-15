@@ -28,7 +28,7 @@
         "spiral/testing": "dev-feature/scopes as 2.8.0",
         "spiral/hmvc": "^3.0",
         "vimeo/psalm": "^5.22",
-        "spiral/framework": "dev-feature/http-scopes as 3.13.0"
+        "spiral/framework": "dev-feature/scopes as 3.13.0"
     },
     "autoload": {
         "psr-4": {
@@ -46,7 +46,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "spiral/composer-publish-plugin": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
