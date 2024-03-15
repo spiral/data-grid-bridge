@@ -11,13 +11,17 @@ use Spiral\Attributes\NamedArgumentConstructor;
  * @Annotation
  * @NamedArgumentConstructor
  * @Target({"METHOD"})
+ *
  * @Annotation\Attributes({
+ *
  *     @Annotation\Attribute("grid", required=true, type="string"),
  *     @Annotation\Attribute("view", type="string"),
  *     @Annotation\Attribute("defaults", type="array"),
  *     @Annotation\Attribute("options", type="array"),
  *     @Annotation\Attribute("factory", type="string")
  * })
+ *
+ * @psalm-suppress DeprecatedClass
  */
 #[\Attribute(\Attribute::TARGET_METHOD), NamedArgumentConstructor]
 class DataGrid
@@ -26,8 +30,10 @@ class DataGrid
      * @psalm-param non-empty-string $grid Points to grid schema
      * @psalm-param non-empty-string|null $view Response options,
      * default to GridSchema->__invoke() if such method exists
+     *
      * @param array $defaults Response options, default to GridSchema->getDefaults() if such method exists
-     * @param array $options Response options, default to GridSchema->getOptions() if such method exists
+     * @param array $options  Response options, default to GridSchema->getOptions() if such method exists
+     *
      * @psalm-param class-string|null $factory Custom user GridFactory
      */
     public function __construct(

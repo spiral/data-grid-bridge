@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Spiral\DataGrid;
 
+use Spiral\Core\Attribute\Scope;
 use Spiral\Http\Request\InputManager;
 
+#[Scope('http.request')]
 final class GridInput implements InputInterface
 {
     public function __construct(
-        private InputManager $input
+        private InputManager $input,
     ) {
     }
 

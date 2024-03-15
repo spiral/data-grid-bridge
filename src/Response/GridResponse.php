@@ -27,12 +27,12 @@ final class GridResponse implements \JsonSerializable, GridResponseInterface
         if ($this->grid === null) {
             return [
                 'status' => 500,
-                'error' => 'missing-grid-source',
+                'error'  => 'missing-grid-source',
             ];
         }
 
         $response = [
-            'status' => $this->option('status', 200),
+            'status'                          => $this->option('status', 200),
             $this->option('property', 'data') => $this->data,
         ];
 
@@ -47,7 +47,7 @@ final class GridResponse implements \JsonSerializable, GridResponseInterface
         return $response;
     }
 
-    private function option(string $name, $default)
+    private function option(string $name, mixed $default): mixed
     {
         return $this->options[$name] ?? $default;
     }
